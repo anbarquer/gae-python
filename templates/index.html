@@ -1,0 +1,43 @@
+{% extends "templates/base.html" %}
+{% block title %}Main page{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="twelve columns">
+        <h1>Welcome</h1>
+        <p><a href="/products">Products list</a></p>
+        <p><a href="{{ url|safe }}">{{ url_linktext}}</a></p>
+    </div>
+</div>
+{% if user %}
+<div class="row">
+    <div class="six columns">
+        <h4>Credentials</h4>
+        <p>User ID: {{user.user_id()}}</p>
+        <p>Domain: {{user.auth_domain()}}</p>
+        <p>Email: {{user.email()}}</p>
+        <p>Username: {{user.nickname()}}</p>
+    </div>
+    <div class="six columns">
+        <h4>Products</h4>
+        <table class="u-full-width">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.key.id()}}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.cost }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

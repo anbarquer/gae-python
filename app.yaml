@@ -1,0 +1,27 @@
+application: appengine-products-python
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /static
+  static_dir: static
+  application_readable: true
+
+- url: /templates
+  static_dir: templates
+  application_readable: true
+
+- url: /.*
+  script: app.app
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

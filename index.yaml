@@ -1,0 +1,7 @@
+indexes:
+
+- kind: Product
+  ancestor: no
+  properties:
+  - name: name
+    direction: asc

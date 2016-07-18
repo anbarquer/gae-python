@@ -1,0 +1,62 @@
+{% extends "templates/base.html" %}
+{% block title %}Product list{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="six columns">
+        <h1>User products</h1>
+        {% if user %}
+        <p>Credits: {{user.credits}}</p>
+        {% endif %}
+        <p><a href="/">Back</a></p>
+
+    </div>
+    <div class="six columns">
+        <h1>Store</h1>
+        <p>
+        <form action="/products" method="post">
+            <input type="hidden" name="action" value="create">
+            <input type="submit" class="button" value="Add product">
+        </form>
+        </p>
+        <table class="u-full-width">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Buy</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <div class="scrollit">
+                <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.key.id()}}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.cost }}</td>
+                    {% if user %}
+                    <td>
+
+                        <form action="/products" method="post">
+                            <input type="hidden" name="action" value="buy">
+                            <input type="hidden" name="id" value="{{product.key.id()}}">
+                            <input type="submit" class="button" value="Buy">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/products" method="post">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="id" value="{{product.key.id()}}">
+                            <input type="submit" class="button" value="Delete">
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </div>
+        </table>
+    </div>
+</div>
+{% endblock %}
