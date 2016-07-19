@@ -2,10 +2,8 @@
 {% block title %}Main page{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="twelve columns">
-        <h1>Welcome</h1>
-        <p><a href="/products">Products list</a></p>
-        <p><a href="{{ url|safe }}">{{ url_linktext}}</a></p>
+    <div class="twelve columns" style="margin-top: 10%">
+        <p><a class="button" href="{{ url|safe }}">{{ url_linktext}}</a></p>
     </div>
 </div>
 {% if user %}
@@ -18,7 +16,7 @@
         <p>Username: {{user.nickname()}}</p>
     </div>
     <div class="six columns">
-        <h4>Products</h4>
+        <h4>User products</h4>
         <table class="u-full-width">
             <thead>
             <tr>

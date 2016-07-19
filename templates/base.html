@@ -23,9 +23,9 @@
     <link rel="stylesheet" href="../static/css/normalize.css">
     <link rel="stylesheet" href="../static/css/skeleton.css">
     <style>
-       *{
-           text-align: center;
-       }
+        * {
+            text-align: center;
+        }
     </style>
 
     <!-- Favicon
@@ -38,6 +38,18 @@
 <!-- Primary Page Layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
+    {% if user %}
+    <div class="row">
+        <div class="offset-by-nine columns">
+            <div class="two columns">
+                <p><a class="button button-primary" href="/">Home</a></p>
+            </div>
+            <div class="two columns">
+                <p><a class="button button-primary" href="/products">Products list</a></p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     {% block content %}{% endblock %}
 </div>
 <!-- End Document
