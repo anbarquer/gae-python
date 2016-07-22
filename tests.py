@@ -1,15 +1,19 @@
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
+
 import sys
 import os
 import unittest
 
 print 'Setting up global environment'
+# Configuración de los directorios
+# Es necesario cambiar GAE_PATH para ejecutar las pruebas
+GAE_PATH = os.environ['HOME'] + '/bin'
+APP_ENGINE_PATH = GAE_PATH + '/google_appengine'
+APP_ENGINE_LIB_PATH = APP_ENGINE_PATH + '/lib/yaml/lib'
 
-GAE_DIR = os.environ['HOME'] + '/bin'
-APP_ENGINE_DIR = GAE_DIR + '/google_appengine'
-APP_ENGINE_LIB_DIR = APP_ENGINE_DIR + '/lib/yaml/lib'
-
-sys.path.insert(1, APP_ENGINE_DIR)
-sys.path.insert(1, APP_ENGINE_LIB_DIR)
+sys.path.insert(1, APP_ENGINE_PATH)
+sys.path.insert(1, APP_ENGINE_LIB_PATH)
 
 print 'Done'
 
